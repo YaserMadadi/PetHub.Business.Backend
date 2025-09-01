@@ -10,7 +10,7 @@ using PetHub.Entities.Base;
 
 namespace PetHub.ApiServices.Controllers.Base;
 
-[Route("api/Base")] // Test
+[Route("api/Base")] 
 public class PetController : BaseController
 {
     public PetController(IPet_Service petService)
