@@ -1,0 +1,16 @@
+# Ignore build outputs
+/bin/
+/obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+
+# Ignore IDE settings
+.vscode/
+*.csproj.user
+
+# Ignore logs
+*.log
+/PetHub.Services/obj
+/PetHub.WebApiPortal/obj

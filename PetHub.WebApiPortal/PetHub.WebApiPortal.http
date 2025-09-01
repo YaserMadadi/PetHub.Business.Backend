@@ -1,0 +1,6 @@
+@PetHub.WebApiPortal_HostAddress = http://localhost:5063
+
+GET {{PetHub.WebApiPortal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
