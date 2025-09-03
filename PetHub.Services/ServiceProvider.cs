@@ -3,12 +3,16 @@ using Microsoft.Extensions.DependencyInjection;
 using EssentialCore.DataAccess;
 using EssentialCore.Tools.Security.JWT;
 using EssentialCore.Tools.Security.Service;
+using PetHub.Services.Admin.Abstract;
+using PetHub.Services.Admin;
 using PetHub.Services.Base.Abstract;
 using PetHub.Services.Base;
 using PetHub.Services.Fund.Abstract;
 using PetHub.Services.Fund;
 using PetHub.Services.Infra.Abstract;
 using PetHub.Services.Infra;
+using PetHub.Services.Extended.Admin.Abstract;
+using PetHub.Services.Extended.Admin;
 
 
 namespace PetHub.Services;
@@ -24,6 +28,25 @@ public static class ServiceProvider
         services.AddScoped<IUserClass, UserClass>();
 
         
+
+		#region Admin
+
+		// Admin Services
+		services.AddScoped<Admin.Abstract.IMenu_Service, Admin.Menu_Service>();
+		services.AddScoped<Admin.Abstract.IMenuItem_Service, Admin.MenuItem_Service>();
+		services.AddScoped<Admin.Abstract.IRole_Service, Admin.Role_Service>();
+		services.AddScoped<Admin.Abstract.IRoleMember_Service, Admin.RoleMember_Service>();
+		services.AddScoped<Admin.Abstract.IRolePermission_Service, Admin.RolePermission_Service>();
+		services.AddScoped<Admin.Abstract.IStaff_Service, Admin.Staff_Service>();
+		services.AddScoped<Admin.Abstract.IStaffPermission_Service, Admin.StaffPermission_Service>();
+		services.AddScoped<Admin.Abstract.IUserType_Service, Admin.UserType_Service>();
+
+	
+        #endregion
+
+        #region AdminExtended
+		//services.AddScoped<I_Service, _Service>();
+		#endregion
 
 		#region Base
 
@@ -77,6 +100,12 @@ public static class ServiceProvider
 		services.AddScoped<Base.Abstract.IWeightUnit_Service, Base.WeightUnit_Service>();
 		services.AddScoped<Base.Abstract.IWorkTime_Service, Base.WorkTime_Service>();
 
+
+		#endregion
+
+		#region AdminExtended
+		//services.AddScoped<I_Service, _Service>();
+		services.AddScoped<IMenu_ExtendedService, Menu_ExtendedService>();
 		#endregion
 
 		#region Fund
@@ -92,6 +121,11 @@ public static class ServiceProvider
 		services.AddScoped<Fund.Abstract.ITransactionType_Service, Fund.TransactionType_Service>();
 		services.AddScoped<Fund.Abstract.IWalletTopUp_Service, Fund.WalletTopUp_Service>();
 
+	
+        #endregion
+
+        #region AdminExtended
+		//services.AddScoped<I_Service, _Service>();
 		#endregion
 
 		#region Infra
@@ -105,6 +139,11 @@ public static class ServiceProvider
 		services.AddScoped<Infra.Abstract.IRecordLog_Service, Infra.RecordLog_Service>();
 		services.AddScoped<Infra.Abstract.IResultMessage_Service, Infra.ResultMessage_Service>();
 
+	
+        #endregion
+
+        #region AdminExtended
+		//services.AddScoped<I_Service, _Service>();
 		#endregion
 
     }

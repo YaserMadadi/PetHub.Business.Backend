@@ -54,6 +54,10 @@ public class Entity : EntityBase, IEntityBase
 
     #region    List Of ....
 
+	public List<Admin.RolePermission> ListOfRolePermission { get; set; } = new();
+
+	public List<Admin.StaffPermission> ListOfStaffPermission { get; set; } = new();
+
 	#endregion
 
     

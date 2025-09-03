@@ -36,8 +36,6 @@ public class IndividualProvider : Provider, IEntityBase
     #region Properties
 
 		
-    public Provider Id { get; set; }
-	
 	public string FirstName { get; set; }
 	
 	public string MiddleName { get; set; }

@@ -7,6 +7,7 @@ using EssentialCore.Tools.Pagination;
 using EssentialCore.Tools.Result;
 using PetHub.Services.Base.Abstract;
 using PetHub.Entities.Base;
+using PetHub.Entities.Admin;
 
 namespace PetHub.ApiServices.Controllers.Base;
 
@@ -118,5 +119,21 @@ public class UserAccountController : BaseController
     public IActionResult CollectionOfProvider([FromRoute(Name = "userAccount_id")] int id, [FromBody] Provider provider)
     {
         return this.userAccountService.CollectionOfProvider(id, provider, this.UserCredit).ToActionResult();
+    }
+
+		//// UserAccount.CollectionOfRoleMember
+    [HttpPost]
+    [Route("UserAccount/{userAccount_id:int}/RoleMember")]
+    public IActionResult CollectionOfRoleMember([FromRoute(Name = "userAccount_id")] int id, [FromBody] RoleMember roleMember)
+    {
+        return this.userAccountService.CollectionOfRoleMember(id, roleMember, this.UserCredit).ToActionResult();
+    }
+
+		//// UserAccount.CollectionOfStaff
+    [HttpPost]
+    [Route("UserAccount/{userAccount_id:int}/Staff")]
+    public IActionResult CollectionOfStaff([FromRoute(Name = "userAccount_id")] int id, [FromBody] Staff staff)
+    {
+        return this.userAccountService.CollectionOfStaff(id, staff, this.UserCredit).ToActionResult();
     }
 }

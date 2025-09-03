@@ -36,8 +36,6 @@ public class EnterpriseProvider : Provider, IEntityBase
     #region Properties
 
 		
-    public Provider Id { get; set; }
-	
 	public string Title { get; set; }
 	
 	public string BusinessNumber { get; set; }

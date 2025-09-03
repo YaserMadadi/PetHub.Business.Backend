@@ -75,7 +75,7 @@ namespace EssentialCore.DataAccess
         }
 
 
-        public async static Task<DataResult<T>> ExecuteDataResult<T>(this SqlCommand command, JsonType jsonType)
+        public async static Task<DataResult<T>> ExecuteDataResult<T>(this SqlCommand command, JsonType jsonType = JsonType.Collection)
         {
             var dataResult = await ExecuteDataResult(command);
 

@@ -3,13 +3,28 @@ namespace PetHub.WebApiPortal
 {
     public class Program
     {
-        public static void Main(string[] args)
+		public static string NardPolicyName { get; set; } = "NardCorsPolicy";
+
+		public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+			builder.Services.AddCors(options =>
+			{
+				options.AddPolicy(NardPolicyName, policy =>
+				{
+					policy
+						.WithOrigins("http://localhost:4200") // Your Angular dev server or production domain
+															  //.AllowAnyOrigin()
+						.AllowAnyHeader()
+						//.AllowCredentials()
+						.AllowAnyMethod();
+				});
+			});
 
-            builder.Services.AddControllers();
+			// Add services to the container.
+
+			builder.Services.AddControllers();
 
             PetHub.Services.ServiceProvider.Load(builder.Services);
 
@@ -25,8 +40,10 @@ namespace PetHub.WebApiPortal
             {
                 app.MapOpenApi();
             }
+			app.UseCors(NardPolicyName);
 
-            app.UseHttpsRedirection();
+
+			app.UseHttpsRedirection();
 
             app.UseAuthorization();
 

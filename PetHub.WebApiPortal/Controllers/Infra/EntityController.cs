@@ -7,6 +7,7 @@ using EssentialCore.Tools.Pagination;
 using EssentialCore.Tools.Result;
 using PetHub.Services.Infra.Abstract;
 using PetHub.Entities.Infra;
+using PetHub.Entities.Admin;
 
 namespace PetHub.ApiServices.Controllers.Infra;
 
@@ -96,5 +97,19 @@ public class EntityController : BaseController
         return result.ToActionResult();
     }
 
-    
+    //// Entity.CollectionOfRolePermission
+    [HttpPost]
+    [Route("Entity/{entity_id:int}/RolePermission")]
+    public IActionResult CollectionOfRolePermission([FromRoute(Name = "entity_id")] int id, [FromBody] RolePermission rolePermission)
+    {
+        return this.entityService.CollectionOfRolePermission(id, rolePermission, this.UserCredit).ToActionResult();
+    }
+
+		//// Entity.CollectionOfStaffPermission
+    [HttpPost]
+    [Route("Entity/{entity_id:int}/StaffPermission")]
+    public IActionResult CollectionOfStaffPermission([FromRoute(Name = "entity_id")] int id, [FromBody] StaffPermission staffPermission)
+    {
+        return this.entityService.CollectionOfStaffPermission(id, staffPermission, this.UserCredit).ToActionResult();
+    }
 }

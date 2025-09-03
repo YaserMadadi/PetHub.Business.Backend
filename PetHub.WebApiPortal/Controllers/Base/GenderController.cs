@@ -7,6 +7,7 @@ using EssentialCore.Tools.Pagination;
 using EssentialCore.Tools.Result;
 using PetHub.Services.Base.Abstract;
 using PetHub.Entities.Base;
+using PetHub.Entities.Admin;
 
 namespace PetHub.ApiServices.Controllers.Base;
 
@@ -110,5 +111,13 @@ public class GenderController : BaseController
     public IActionResult CollectionOfPet([FromRoute(Name = "gender_id")] int id, [FromBody] Pet pet)
     {
         return this.genderService.CollectionOfPet(id, pet, this.UserCredit).ToActionResult();
+    }
+
+		//// Gender.CollectionOfStaff
+    [HttpPost]
+    [Route("Gender/{gender_id:int}/Staff")]
+    public IActionResult CollectionOfStaff([FromRoute(Name = "gender_id")] int id, [FromBody] Staff staff)
+    {
+        return this.genderService.CollectionOfStaff(id, staff, this.UserCredit).ToActionResult();
     }
 }

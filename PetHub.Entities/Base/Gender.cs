@@ -50,6 +50,8 @@ public class Gender : EntityBase, IEntityBase
 
 	public List<Pet> ListOfPet { get; set; } = new();
 
+	public List<Admin.Staff> ListOfStaff { get; set; } = new();
+
 	#endregion
 
     

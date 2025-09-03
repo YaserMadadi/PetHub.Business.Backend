@@ -42,6 +42,8 @@ public class UserAccount : EntityBase, IEntityBase
 	
 	public byte[] Hash { get; set; }
 	
+    public Admin.UserType UserType { get; set; }
+	
     public AccountStatus AccountStatus { get; set; }
 	
 	public string StatusNote { get; set; }
@@ -62,6 +64,10 @@ public class UserAccount : EntityBase, IEntityBase
 
 	public List<Provider> ListOfProvider { get; set; } = new();
 
+	public List<Admin.RoleMember> ListOfRoleMember { get; set; } = new();
+
+	public List<Admin.Staff> ListOfStaff { get; set; } = new();
+
 	#endregion
 
     
@@ -70,6 +76,7 @@ public class UserAccount : EntityBase, IEntityBase
         return Email.Validate() &&
 				Password.Validate() &&
 				Hash.Validate() &&
+				UserType.Validate() &&
 				AccountStatus.Validate() &&
 				StatusNote.Validate() &&
 				EmailIsVerified.Validate() &&
