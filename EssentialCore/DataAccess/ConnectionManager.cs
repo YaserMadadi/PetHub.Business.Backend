@@ -24,9 +24,13 @@ namespace EssentialCore.DataAccess
         {
             Configuration = configuration;
 
+            Console.Write("tesr");
+
             var connection = Configuration["ConnectionString"]!.ToString();//.GetSection("Connection").Get<Connection>(); // ""; //Tools.Configuartion.ConfigurationService.ReadSection<Connection>("Connection");
 
-            ConnectionManager.ConnectionString = connection;  //$"Server={connection.Server};DataBase={connection.DataBase};UID={connection.UID};PWD={connection.Password};Encrypt=False;TrustServerCertificate=True;";
+			Console.Write("after tesr");
+
+			ConnectionManager.ConnectionString = connection;  //$"Server={connection.Server};DataBase={connection.DataBase};UID={connection.UID};PWD={connection.Password};Encrypt=False;TrustServerCertificate=True;";
         }
 
 
