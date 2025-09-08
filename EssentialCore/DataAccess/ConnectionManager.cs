@@ -24,9 +24,9 @@ namespace EssentialCore.DataAccess
         {
             Configuration = configuration;
 
-            var connection = Configuration.GetSection("Connection").Get<Connection>(); // ""; //Tools.Configuartion.ConfigurationService.ReadSection<Connection>("Connection");
+            var connection = Configuration["ConnectionString"]!.ToString();//.GetSection("Connection").Get<Connection>(); // ""; //Tools.Configuartion.ConfigurationService.ReadSection<Connection>("Connection");
 
-            ConnectionManager.ConnectionString = $"Server={connection.Server};DataBase={connection.DataBase};UID={connection.UID};PWD={connection.Password};Encrypt=False;TrustServerCertificate=True;";
+            ConnectionManager.ConnectionString = connection;  //$"Server={connection.Server};DataBase={connection.DataBase};UID={connection.UID};PWD={connection.Password};Encrypt=False;TrustServerCertificate=True;";
         }
 
 

@@ -1,4 +1,6 @@
 
+using System.Threading.RateLimiting;
+
 namespace PetHub.WebApiPortal
 {
     public class Program
@@ -19,6 +21,25 @@ namespace PetHub.WebApiPortal
 						.AllowAnyHeader()
 						//.AllowCredentials()
 						.AllowAnyMethod();
+				});
+			});
+
+			builder.Services.AddRateLimiter(options =>
+			{
+				options.AddPolicy("VerificationPolicy", context =>
+				{
+					// Use the client's IP as the partition key
+					var ip = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+
+					return RateLimitPartition.GetFixedWindowLimiter(
+						partitionKey: ip,
+						factory: partition => new FixedWindowRateLimiterOptions
+						{
+							PermitLimit = 5,                // max 5 requests
+							Window = TimeSpan.FromMinutes(1), // per 1 minute
+							QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+							QueueLimit = 0
+						});
 				});
 			});
 

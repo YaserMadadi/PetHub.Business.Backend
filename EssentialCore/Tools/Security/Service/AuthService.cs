@@ -37,7 +37,7 @@ namespace EssentialCore.Tools.Security.Service
 
                 return new ErrorDataResult<AccessToken>(-1, result.Message);
 
-            var userCheck = await this.CheckInDataBase(loginUser.UserName);
+            var userCheck = await this.CheckInDataBase(loginUser.Email);
 
             if (userCheck == null || !userCheck.IsSucceeded)
             {

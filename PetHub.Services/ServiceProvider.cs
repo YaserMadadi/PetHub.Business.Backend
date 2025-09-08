@@ -1,18 +1,20 @@
 
-using Microsoft.Extensions.DependencyInjection;
 using EssentialCore.DataAccess;
 using EssentialCore.Tools.Security.JWT;
 using EssentialCore.Tools.Security.Service;
-using PetHub.Services.Admin.Abstract;
+using Microsoft.Extensions.DependencyInjection;
 using PetHub.Services.Admin;
-using PetHub.Services.Base.Abstract;
+using PetHub.Services.Admin.Abstract;
 using PetHub.Services.Base;
-using PetHub.Services.Fund.Abstract;
-using PetHub.Services.Fund;
-using PetHub.Services.Infra.Abstract;
-using PetHub.Services.Infra;
-using PetHub.Services.Extended.Admin.Abstract;
+using PetHub.Services.Base.Abstract;
 using PetHub.Services.Extended.Admin;
+using PetHub.Services.Extended.Admin.Abstract;
+using PetHub.Services.Extended.Security;
+using PetHub.Services.Extended.Security.Abstract;
+using PetHub.Services.Fund;
+using PetHub.Services.Fund.Abstract;
+using PetHub.Services.Infra;
+using PetHub.Services.Infra.Abstract;
 
 
 namespace PetHub.Services;
@@ -139,12 +141,14 @@ public static class ServiceProvider
 		services.AddScoped<Infra.Abstract.IRecordLog_Service, Infra.RecordLog_Service>();
 		services.AddScoped<Infra.Abstract.IResultMessage_Service, Infra.ResultMessage_Service>();
 
-	
-        #endregion
 
-        #region AdminExtended
+		#endregion
+
+		#region AdminExtended
 		//services.AddScoped<I_Service, _Service>();
 		#endregion
 
-    }
+		services.AddScoped<IAuthentication_Service, Authentication_Service>();
+
+	}
 }

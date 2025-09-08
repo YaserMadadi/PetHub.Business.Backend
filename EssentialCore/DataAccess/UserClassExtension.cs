@@ -36,7 +36,7 @@ namespace EssentialCore.DataAccess
 
                     message = reader.GetString(1);
 
-                    originalMessage = reader.GetString(2) ?? string.Empty;
+                    //originalMessage = reader.GetString(2) ?? string.Empty;
                 }
 
                 if (id <= 0)

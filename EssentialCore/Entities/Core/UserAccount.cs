@@ -6,25 +6,21 @@ using System.Threading.Tasks;
 
 namespace EssentialCore.Entities.Core
 {
-    public class UserAccount : EntityBase, IEntityBase
-    {
-        public UserAccount() : base(UserAccount.Informer)
-        {
+	public class UserAccount : EntityBase, IEntityBase
+	{
+		public UserAccount() : base(UserAccount.Informer)
+		{
 
 
-        }
+		}
 
-        protected static Info Informer { get; private set; } = new Info("Core", "UserAccount", "User Account");
-
-
-        public string UserName { get; set; }
-
-        public byte[] PasswordHash { get; set; }
+		protected static Info Informer { get; private set; } = new Info("Core", "UserAccount", "User Account");
 
 
-        public byte[] PasswordKey { get; set; }
+		public string Email { get; set; }
 
-        public bool IsActive { get; set; }
+		public string Password { get; set; }
 
-    }
+		public int UserType_Id { get; set; }
+	}
 }
